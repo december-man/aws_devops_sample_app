@@ -27,7 +27,7 @@ describe('HTTP Server', () => {
         data += chunk;
       });
       res.on('end', () => {
-        expect(data).to.equal('Hello, World!\n');
+        expect(data).to.equal('Hello, World! This is a v2 release based on v2 image from AWS ECR!\n');
         done();
       });
     });

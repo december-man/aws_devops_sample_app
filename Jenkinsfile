@@ -52,7 +52,6 @@ pipeline {
       steps {
         container('nodejs') {
           git branch: 'master', url: 'https://github.com/december-man/aws_devops_sample_app.git'
-          sh 'pwd && cd /home/jenkins/agent/workspace/aws_devops_t6 && ls -la /home/jenkins/agent/workspace/aws_devops_t6'
         }
       }
     }
@@ -91,7 +90,7 @@ pipeline {
       }
     }
 
-    stage('Upgrade Application using Helm') { //
+    stage('Upgrade Application using Helm') { // Run Helm with KUBECONFIG environment to upgrade kubernetes deployment with the new image from ECR
       steps {
         container('helm') {        
           sh '''
