@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  nodejs:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-11-24T19:20:53.062145348Z"
+    description: A Helm chart for Kubernetes
+    digest: db50b8d432fecaa7827441abeb49e3418592d133fb76ae1d7e97a10d3519df62
+    name: nodejs
+    type: application
+    urls:
+    - https://december-man.github.io/aws_devops_sample_app/nodejs-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-11-24T19:20:53.057739053Z"
