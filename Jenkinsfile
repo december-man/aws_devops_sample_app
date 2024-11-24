@@ -115,9 +115,6 @@ pipeline {
   }
 
 //   post { // NOTE: CONFIGURE SMTP SERVER TO HAVE EMAIL NOTIFICATIONS!
-//     always {
-//       echo 'Kaniko build stage finished.'
-//     }
 //     success {
 //       mail to: 'alexpequalsmc@gmail.com',
 //         subject: "SUCCESS: ${currentBuild.fullDisplayName}",
