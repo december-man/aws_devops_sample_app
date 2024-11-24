@@ -9,6 +9,6 @@ entries:
     name: nodejs
     type: application
     urls:
-    - https://december-man.github.io/aws_devops_sample_app/nodejs-0.1.0.tgz
+    - https://raw.githubusercontent.com/december-man/aws_devops_sample_app/master/nodejs-0.1.0.tgz
     version: 0.1.0
 generated: "2024-11-24T19:20:53.057739053Z"
