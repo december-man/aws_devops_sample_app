@@ -98,7 +98,7 @@ pipeline {
           helm repo update
           helm upgrade myapp myapp-repo/nodejs -n jenkins --install \
             --set image.repository=302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops/apps \
-            --set image.tag=v1
+            --set image.tag=v2
           '''
         }
       }

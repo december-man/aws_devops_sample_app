@@ -1,0 +1,298 @@
+Started by user Jenkins Admin
+[Pipeline] Start of Pipeline
+[Pipeline] podTemplate
+[Pipeline] {
+[Pipeline] node
+Created Pod: kubernetes jenkins/aws-devops-t6-76-klp7h-c5079-nqb1v
+Agent aws-devops-t6-76-klp7h-c5079-nqb1v is provisioned from template aws_devops_t6_76-klp7h-c5079
+---
+apiVersion: "v1"
+kind: "Pod"
+metadata:
+  annotations:
+    kubernetes.jenkins.io/last-refresh: "1732483016925"
+    buildUrl: "http://jenkins.jenkins.svc.cluster.local:8080/job/aws_devops_t6/76/"
+    runUrl: "job/aws_devops_t6/76/"
+  labels:
+    jenkins/jenkins-jenkins-agent: "true"
+    jenkins/label-digest: "fea32e89b6f6b437cde97466d0baddc40f040e62"
+    jenkins/label: "aws_devops_t6_76-klp7h"
+    kubernetes.jenkins.io/controller: "http___jenkins_jenkins_svc_cluster_local_8080x"
+  name: "aws-devops-t6-76-klp7h-c5079-nqb1v"
+  namespace: "jenkins"
+spec:
+  containers:
+  - command:
+    - "cat"
+    image: "node:alpine"
+    name: "nodejs"
+    tty: true
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  - command:
+    - "/busybox/cat"
+    image: "gcr.io/kaniko-project/executor:debug"
+    imagePullPolicy: "IfNotPresent"
+    name: "kaniko"
+    tty: true
+    volumeMounts:
+    - mountPath: "/root/.aws/"
+      name: "aws-secret-volume"
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  - command:
+    - "/bin/sh"
+    env:
+    - name: "KUBECONFIG"
+      value: "/etc/kubeconfig/kubeconfig"
+    image: "alpine/helm:latest"
+    name: "helm"
+    tty: true
+    volumeMounts:
+    - mountPath: "/etc/kubeconfig"
+      name: "kubeconfig-volume"
+    - mountPath: "/root/.aws/"
+      name: "ecr-secret-volume"
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  - env:
+    - name: "JENKINS_SECRET"
+      value: "********"
+    - name: "JENKINS_TUNNEL"
+      value: "jenkins-agent.jenkins.svc.cluster.local:50000"
+    - name: "JENKINS_AGENT_NAME"
+      value: "aws-devops-t6-76-klp7h-c5079-nqb1v"
+    - name: "REMOTING_OPTS"
+      value: "-noReconnectAfter 1d"
+    - name: "JENKINS_NAME"
+      value: "aws-devops-t6-76-klp7h-c5079-nqb1v"
+    - name: "JENKINS_AGENT_WORKDIR"
+      value: "/home/jenkins/agent"
+    - name: "JENKINS_URL"
+      value: "http://jenkins.jenkins.svc.cluster.local:8080/"
+    image: "jenkins/inbound-agent:3261.v9c670a_4748a_9-2"
+    name: "jnlp"
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "100m"
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  nodeSelector:
+    kubernetes.io/os: "linux"
+  restartPolicy: "Never"
+  volumes:
+  - name: "kubeconfig-volume"
+    secret:
+      secretName: "k3s-kubeconfig"
+  - emptyDir:
+      medium: ""
+    name: "workspace-volume"
+  - name: "aws-secret-volume"
+    secret:
+      secretName: "aws-secret"
+  - name: "ecr-secret-volume"
+    secret:
+      secretName: "ecr-secret"
+
+Running on aws-devops-t6-76-klp7h-c5079-nqb1v in /home/jenkins/agent/workspace/aws_devops_t6
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Git Clone)
+[Pipeline] container
+[Pipeline] {
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Warning: JENKINS-30600: special launcher org.csanchez.jenkins.plugins.kubernetes.pipeline.ContainerExecDecorator$1@20d08865; decorates RemoteLauncher[hudson.remoting.Channel@680d2dbc:JNLP4-connect connection from ip-10-42-1-104.eu-central-1.compute.internal/10.42.1.104:50264] will be ignored (a typical symptom is the Git executable not being run inside a designated container)
+Cloning the remote Git repository
+Cloning repository https://github.com/december-man/aws_devops_sample_app.git
+ > git init /home/jenkins/agent/workspace/aws_devops_t6 # timeout=10
+Fetching upstream changes from https://github.com/december-man/aws_devops_sample_app.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+ > git fetch --tags --force --progress -- https://github.com/december-man/aws_devops_sample_app.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/december-man/aws_devops_sample_app.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Checking out Revision c3b4bc4edf14e1ee2750b36d7a3c0f993d3db4cb (refs/remotes/origin/master)
+Commit message: "update test.js, update jenkins pipeline"
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f c3b4bc4edf14e1ee2750b36d7a3c0f993d3db4cb # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b master c3b4bc4edf14e1ee2750b36d7a3c0f993d3db4cb # timeout=10
+ > git rev-list --no-walk f7ff4c38d6ca422e2a4bddaadd0cd88048308d9f # timeout=10
+[Pipeline] }
+[Pipeline] // container
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Install Dependencies)
+[Pipeline] container
+[Pipeline] {
+[Pipeline] sh
++ npm install ./myapp
+(node:17) ExperimentalWarning: CommonJS module /usr/local/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /usr/local/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated glob@8.1.0: Glob versions prior to v9 are no longer supported
+
+added 78 packages in 5s
+
+20 packages are looking for funding
+  run `npm fund` for details
+[Pipeline] }
+[Pipeline] // container
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run Tests)
+[Pipeline] container
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ node ./myapp/app.js
+Server running at http://localhost:3000/
+[Pipeline] sleep
+Sleeping for 5 sec
+[Pipeline] sh
++ cd myapp
++ npm test
+
+> myapp@1.0.0 test
+> mocha
+
+
+
+  HTTP Server
+    ✔ should return 200 OK (91ms)
+    ✔ should return "Hello, World!"
+
+
+  2 passing (103ms)
+
+[Pipeline] sh
++ pkill -f 'node app.js'
++ true
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // container
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image Using Kaniko and Push It to AWS ECR)
+[Pipeline] container
+[Pipeline] {
+[Pipeline] sh
++ cd /home/jenkins/agent/workspace/aws_devops_t6/myapp
++ pwd
++ pwd
++ /kaniko/executor --context /home/jenkins/agent/workspace/aws_devops_t6/myapp --dockerfile /home/jenkins/agent/workspace/aws_devops_t6/myapp/Dockerfile --destination 302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops/apps:v1
+[36mINFO[0m[0000] Retrieving image manifest node:14            
+[36mINFO[0m[0000] Retrieving image node:14 from registry index.docker.io 
+[36mINFO[0m[0001] Built cross stage deps: map[]                
+[36mINFO[0m[0001] Retrieving image manifest node:14            
+[36mINFO[0m[0001] Returning cached image manifest              
+[36mINFO[0m[0001] Executing 0 build triggers                   
+[36mINFO[0m[0001] Building stage 'node:14' [idx: '0', base-idx: '-1'] 
+[36mINFO[0m[0001] Unpacking rootfs as cmd COPY package*.json ./ requires it. 
+[36mINFO[0m[0019] WORKDIR /usr/src/app                         
+[36mINFO[0m[0019] Cmd: workdir                                 
+[36mINFO[0m[0019] Changed working directory to /usr/src/app    
+[36mINFO[0m[0019] Creating directory /usr/src/app with uid -1 and gid -1 
+[36mINFO[0m[0019] Taking snapshot of files...                  
+[36mINFO[0m[0019] Resolving srcs [package*.json]...            
+[36mINFO[0m[0019] COPY package*.json ./                        
+[36mINFO[0m[0019] Resolving srcs [package*.json]...            
+[36mINFO[0m[0019] Taking snapshot of files...                  
+[36mINFO[0m[0019] RUN npm install                              
+[36mINFO[0m[0019] Initializing snapshotter ...                 
+[36mINFO[0m[0019] Taking snapshot of full filesystem...        
+[36mINFO[0m[0053] Cmd: /bin/sh                                 
+[36mINFO[0m[0053] Args: [-c npm install]                       
+[36mINFO[0m[0053] Running: [/bin/sh -c npm install]            
+npm WARN read-shrinkwrap This version of npm is compatible with lockfileVersion@1, but package-lock.json was generated for lockfileVersion@3. I'll try to do my best with it!
+npm WARN deprecated glob@8.1.0: Glob versions prior to v9 are no longer supported
+npm WARN deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm WARN notsup Unsupported engine for check-error@2.1.1: wanted: {"node":">= 16"} (current: {"node":"14.21.3","npm":"6.14.18"})
+npm WARN notsup Not compatible with your version of node/npm: check-error@2.1.1
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@~2.3.2 (node_modules/chokidar/node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+npm WARN myapp@1.0.0 No repository field.
+
+added 77 packages from 56 contributors and audited 78 packages in 2.824s
+
+20 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+[36mINFO[0m[0057] Taking snapshot of full filesystem...        
+[36mINFO[0m[0090] COPY . .                                     
+[36mINFO[0m[0091] Taking snapshot of files...                  
+[36mINFO[0m[0091] EXPOSE 3000                                  
+[36mINFO[0m[0091] Cmd: EXPOSE                                  
+[36mINFO[0m[0091] Adding exposed port: 3000/tcp                
+[36mINFO[0m[0091] CMD ["node", "app.js"]                       
+[36mINFO[0m[0091] Pushing image to 302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops/apps:v1
+[36mINFO[0m[0092] Pushed 302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops/apps@sha256:8e8ad331d2d8c86986189e9378db33806582dc0bd88098ce662ee6ec7557057b 
+[Pipeline] }
+[Pipeline] // container
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Upgrade Application using Helm)
+[Pipeline] container
+[Pipeline] {
+[Pipeline] sh
++ helm repo add myapp-repo https://raw.githubusercontent.com/december-man/aws_devops_sample_app/master/
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /etc/kubeconfig/kubeconfig
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /etc/kubeconfig/kubeconfig
+"myapp-repo" has been added to your repositories
++ helm repo update
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /etc/kubeconfig/kubeconfig
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /etc/kubeconfig/kubeconfig
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "myapp-repo" chart repository
+Update Complete. ⎈Happy Helming!⎈
++ helm upgrade myapp myapp-repo/nodejs -n jenkins --install --set 'image.repository=302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops/apps' --set 'image.tag=v1'
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /etc/kubeconfig/kubeconfig
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /etc/kubeconfig/kubeconfig
+Release "myapp" has been upgraded. Happy Helming!
+NAME: myapp
+LAST DEPLOYED: Sun Nov 24 21:19:06 2024
+NAMESPACE: jenkins
+STATUS: deployed
+REVISION: 9
+NOTES:
+1. Get the application URL by running these commands:
+  export NODE_PORT=$(kubectl get --namespace jenkins -o jsonpath="{.spec.ports[0].nodePort}" services myapp-nodejs)
+  export NODE_IP=$(kubectl get nodes --namespace jenkins -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+[Pipeline] }
+[Pipeline] // container
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+Pipeline succeeded!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // podTemplate
+[Pipeline] End of Pipeline
+Finished: SUCCESS
