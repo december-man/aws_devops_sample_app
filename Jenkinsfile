@@ -19,7 +19,7 @@ pipeline {
             tty: true
             volumeMounts:
             - name: aws-secret-volume
-              mountPath: /root/.aws/
+              mountPath: root/.aws/
           - name: helm
             image: alpine/helm:latest
             command:
@@ -83,8 +83,8 @@ pipeline {
         container('kaniko') {
           sh """ 
               #!/bin/sh
-              cd /home/jenkins/agent/workspace/aws_devops_t6/myapp
-              /kaniko/executor --context `pwd` --dockerfile `pwd`/Dockerfile --destination 302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops/apps:v2
+              cd myapp
+              /kaniko/executor --context `pwd` --dockerfile `pwd`/Dockerfile --destination 302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops:latest
           """
         }
       }
@@ -97,8 +97,8 @@ pipeline {
           helm repo add myapp-repo https://raw.githubusercontent.com/december-man/aws_devops_sample_app/master/
           helm repo update
           helm upgrade myapp myapp-repo/nodejs -n jenkins --install \
-            --set image.repository=302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops/apps \
-            --set image.tag=v2
+            --set image.repository=302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops \
+            --set image.tag=latest
           '''
         }
       }
