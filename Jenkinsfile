@@ -103,26 +103,16 @@ pipeline {
     }
   }
 
-  post {
+  post { // NOTE: CONFIGURE SMTP SERVER TO HAVE EMAIL NOTIFICATIONS!
     success {
-      echo 'Pipeline succeeded!'
+      mail to: 'XXX@outlook.com',
+        subject: "SUCCESS: ${currentBuild.fullDisplayName}",
+        body: "The pipeline has succeeded."
     }
     failure {
-      echo 'Pipeline failed...'
+      mail to: 'XXX@outlook.com',
+        subject: "FAILURE: ${currentBuild.fullDisplayName}",
+        body: "The pipeline has failed."
     }
   }
-
-//   post { // NOTE: CONFIGURE SMTP SERVER TO HAVE EMAIL NOTIFICATIONS!
-//     success {
-//       mail to: 'alexpequalsmc@gmail.com',
-//         subject: "SUCCESS: ${currentBuild.fullDisplayName}",
-//         body: "The pipeline has succeeded."
-//     }
-//     failure {
-//       mail to: 'alexpequalsmc@gmail.com',
-//         subject: "FAILURE: ${currentBuild.fullDisplayName}",
-//         body: "The pipeline has failed."
-//     }
-//   }
-
 }
