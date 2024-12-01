@@ -92,11 +92,9 @@ pipeline {
 
     stage('Upgrade Application using Helm') { // Run Helm with KUBECONFIG environment to upgrade kubernetes deployment with the new image from ECR
       steps {
-        container('helm') {        
+        container('helm') {
           sh '''
-          helm repo add myapp-repo https://raw.githubusercontent.com/december-man/aws_devops_sample_app/master/
-          helm repo update
-          helm upgrade myapp myapp-repo/nodejs -n jenkins --install \
+          helm upgrade myapp ./nodejs -n jenkins --install \
             --set image.repository=302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops \
             --set image.tag=latest
           '''

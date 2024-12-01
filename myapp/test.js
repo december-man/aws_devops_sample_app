@@ -20,14 +20,14 @@ describe('HTTP Server', () => {
     req.end();
   });
 
-  it('should return "Hello, World!"', (done) => {
+  it('should return "Hello, Volha!"', (done) => {
     const req = http.request(options, (res) => {
       let data = '';
       res.on('data', (chunk) => {
         data += chunk;
       });
       res.on('end', () => {
-        expect(data).to.equal('Hello, World! This is a v2 release based on v2 image from AWS ECR!\n');
+        expect(data).to.equal('Hello, Volha!\n');
         done();
       });
     });
