@@ -3,22 +3,22 @@ Started by user Jenkins Admin
 [Pipeline] podTemplate
 [Pipeline] {
 [Pipeline] node
-Created Pod: kubernetes jenkins/aws-devops-t6-3-116lm-bdf5w-tf8b4
-Agent aws-devops-t6-3-116lm-bdf5w-tf8b4 is provisioned from template aws_devops_t6_3-116lm-bdf5w
+Created Pod: kubernetes jenkins/aws-devops-t6-25-qvwws-6crk5-qcx41
+Agent aws-devops-t6-25-qvwws-6crk5-qcx41 is provisioned from template aws_devops_t6_25-qvwws-6crk5
 ---
 apiVersion: "v1"
 kind: "Pod"
 metadata:
   annotations:
-    kubernetes.jenkins.io/last-refresh: "1733063208449"
-    buildUrl: "http://jenkins.jenkins.svc.cluster.local:8080/job/aws_devops_t6/3/"
-    runUrl: "job/aws_devops_t6/3/"
+    kubernetes.jenkins.io/last-refresh: "1733084111825"
+    buildUrl: "http://jenkins.jenkins.svc.cluster.local:8080/job/aws_devops_t6/25/"
+    runUrl: "job/aws_devops_t6/25/"
   labels:
     jenkins/jenkins-jenkins-agent: "true"
-    jenkins/label-digest: "357b9d6434fe16426626d5fdad3f8c9c6606e17d"
-    jenkins/label: "aws_devops_t6_3-116lm"
+    jenkins/label-digest: "8aceae38a6c06be4b28199e48914c9cf6707ba3f"
+    jenkins/label: "aws_devops_t6_25-qvwws"
     kubernetes.jenkins.io/controller: "http___jenkins_jenkins_svc_cluster_local_8080x"
-  name: "aws-devops-t6-3-116lm-bdf5w-tf8b4"
+  name: "aws-devops-t6-25-qvwws-6crk5-qcx41"
   namespace: "jenkins"
 spec:
   containers:
@@ -65,11 +65,11 @@ spec:
     - name: "JENKINS_TUNNEL"
       value: "jenkins-agent.jenkins.svc.cluster.local:50000"
     - name: "JENKINS_AGENT_NAME"
-      value: "aws-devops-t6-3-116lm-bdf5w-tf8b4"
+      value: "aws-devops-t6-25-qvwws-6crk5-qcx41"
     - name: "REMOTING_OPTS"
       value: "-noReconnectAfter 1d"
     - name: "JENKINS_NAME"
-      value: "aws-devops-t6-3-116lm-bdf5w-tf8b4"
+      value: "aws-devops-t6-25-qvwws-6crk5-qcx41"
     - name: "JENKINS_AGENT_WORKDIR"
       value: "/home/jenkins/agent"
     - name: "JENKINS_URL"
@@ -101,7 +101,7 @@ spec:
     secret:
       secretName: "ecr-secret"
 
-Running on aws-devops-t6-3-116lm-bdf5w-tf8b4 in /home/jenkins/agent/workspace/aws_devops_t6
+Running on aws-devops-t6-25-qvwws-6crk5-qcx41 in /home/jenkins/agent/workspace/aws_devops_t6
 [Pipeline] {
 [Pipeline] stage
 [Pipeline] { (Git Clone)
@@ -110,7 +110,7 @@ Running on aws-devops-t6-3-116lm-bdf5w-tf8b4 in /home/jenkins/agent/workspace/aw
 [Pipeline] git
 The recommended git tool is: NONE
 No credentials specified
-Warning: JENKINS-30600: special launcher org.csanchez.jenkins.plugins.kubernetes.pipeline.ContainerExecDecorator$1@10b5d5e9; decorates RemoteLauncher[hudson.remoting.Channel@7aee74f1:JNLP4-connect connection from ip-10-42-1-12.eu-central-1.compute.internal/10.42.1.12:49634] will be ignored (a typical symptom is the Git executable not being run inside a designated container)
+Warning: JENKINS-30600: special launcher org.csanchez.jenkins.plugins.kubernetes.pipeline.ContainerExecDecorator$1@26212ac4; decorates RemoteLauncher[hudson.remoting.Channel@49b350e:JNLP4-connect connection from ip-10-42-1-39.eu-central-1.compute.internal/10.42.1.39:48848] will be ignored (a typical symptom is the Git executable not being run inside a designated container)
 Cloning the remote Git repository
 Cloning repository https://github.com/december-man/aws_devops_sample_app.git
  > git init /home/jenkins/agent/workspace/aws_devops_t6 # timeout=10
@@ -118,17 +118,17 @@ Fetching upstream changes from https://github.com/december-man/aws_devops_sample
  > git --version # timeout=10
  > git --version # 'git version 2.39.2'
  > git fetch --tags --force --progress -- https://github.com/december-man/aws_devops_sample_app.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Checking out Revision a6059c203f7f51cda84746e7e26976578d1a58ad (refs/remotes/origin/master)
  > git config remote.origin.url https://github.com/december-man/aws_devops_sample_app.git # timeout=10
  > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
-Avoid second fetch
-Checking out Revision 96112695645ae4ffb9e04f166197d6bce023972b (refs/remotes/origin/master)
-Commit message: "New way of using helm upgrade, new app version"
  > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
  > git config core.sparsecheckout # timeout=10
- > git checkout -f 96112695645ae4ffb9e04f166197d6bce023972b # timeout=10
+Commit message: "add sonar-project.properties file"
+ > git checkout -f a6059c203f7f51cda84746e7e26976578d1a58ad # timeout=10
  > git branch -a -v --no-abbrev # timeout=10
- > git checkout -b master 96112695645ae4ffb9e04f166197d6bce023972b # timeout=10
- > git rev-list --no-walk f5d6bad4b10a9aa3fa1affff56100dfd51193107 # timeout=10
+ > git checkout -b master a6059c203f7f51cda84746e7e26976578d1a58ad # timeout=10
+ > git rev-list --no-walk a6059c203f7f51cda84746e7e26976578d1a58ad # timeout=10
 [Pipeline] }
 [Pipeline] // container
 [Pipeline] }
@@ -139,13 +139,13 @@ Commit message: "New way of using helm upgrade, new app version"
 [Pipeline] {
 [Pipeline] sh
 + npm install ./myapp
-(node:18) ExperimentalWarning: CommonJS module /usr/local/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /usr/local/lib/node_modules/npm/node_modules/supports-color/index.js using require().
+(node:17) ExperimentalWarning: CommonJS module /usr/local/lib/node_modules/npm/node_modules/debug/src/node.js is loading ES Module /usr/local/lib/node_modules/npm/node_modules/supports-color/index.js using require().
 Support for loading ES Module in require() is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 npm warn deprecated glob@8.1.0: Glob versions prior to v9 are no longer supported
 
-added 78 packages in 11s
+added 78 packages in 6s
 
 20 packages are looking for funding
   run `npm fund` for details
@@ -178,7 +178,7 @@ Sleeping for 5 sec
     ✔ should return "Hello, Volha!"
 
 
-  2 passing (50ms)
+  2 passing (45ms)
 
 [Pipeline] sh
 + pkill -f 'node app.js'
@@ -187,6 +187,328 @@ Sleeping for 5 sec
 [Pipeline] // script
 [Pipeline] }
 [Pipeline] // container
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarCloud Analysis)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: SonarCloud
+[Pipeline] {
+[Pipeline] tool
+Unpacking https://repo1.maven.org/maven2/org/sonarsource/scanner/cli/sonar-scanner-cli/6.2.1.4610/sonar-scanner-cli-6.2.1.4610.zip to /home/jenkins/agent/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner on aws-devops-t6-25-qvwws-6crk5-qcx41
+[Pipeline] sh
++ pwd
++ export APP=/home/jenkins/agent/workspace/aws_devops_t6/myapp
++ echo SONARSCANNER: /home/jenkins/agent/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner, APP: /home/jenkins/agent/workspace/aws_devops_t6/myapp
+SONARSCANNER: /home/jenkins/agent/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner, APP: /home/jenkins/agent/workspace/aws_devops_t6/myapp
++ /home/jenkins/agent/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/bin/sonar-scanner -Dsonar.projectKey=december-man_aws_devops_sample_app -Dsonar.organization=december-man -Dsonar.sources=/home/jenkins/agent/workspace/aws_devops_t6/myapp -Dsonar.host.url=https://sonarcloud.io
+20:15:46.452 INFO  Scanner configuration file: /home/jenkins/agent/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/conf/sonar-scanner.properties
+20:15:46.460 INFO  Project root configuration file: NONE
+20:15:46.504 INFO  SonarScanner CLI 6.2.1.4610
+20:15:46.509 INFO  Java 17.0.12 Eclipse Adoptium (64-bit)
+20:15:46.510 INFO  Linux 5.10.226-214.879.amzn2.x86_64 amd64
+20:15:46.590 INFO  User cache: /home/jenkins/.sonar/cache
+20:15:47.766 INFO  JRE provisioning: os[linux], arch[x86_64]
+20:15:53.478 INFO  Communicating with SonarCloud
+20:15:54.111 INFO  Starting SonarScanner Engine...
+20:15:54.113 INFO  Java 17.0.11 Eclipse Adoptium (64-bit)
+20:15:55.801 INFO  Load global settings
+20:15:57.035 INFO  Load global settings (done) | time=1235ms
+20:15:57.045 INFO  Server id: 1BD809FA-AWHW8ct9-T_TB3XqouNu
+20:15:57.370 INFO  Loading required plugins
+20:15:57.371 INFO  Load plugins index
+20:15:57.881 INFO  Load plugins index (done) | time=509ms
+20:15:57.884 INFO  Load/download plugins
+20:16:00.071 INFO  Load/download plugins (done) | time=2187ms
+20:16:00.872 INFO  Found an active CI vendor: 'Jenkins'
+20:16:00.902 INFO  Load project settings for component key: 'december-man_aws_devops_sample_app'
+20:16:01.421 INFO  Load project settings for component key: 'december-man_aws_devops_sample_app' (done) | time=519ms
+20:16:01.436 INFO  Process project properties
+20:16:01.448 INFO  Project key: december-man_aws_devops_sample_app
+20:16:01.449 INFO  Base dir: /home/jenkins/agent/workspace/aws_devops_t6
+20:16:01.453 INFO  Working dir: /home/jenkins/agent/workspace/aws_devops_t6/.scannerwork
+20:16:01.469 INFO  Load project branches
+20:16:02.037 INFO  Load project branches (done) | time=569ms
+20:16:02.041 INFO  Check ALM binding of project 'december-man_aws_devops_sample_app'
+20:16:02.300 INFO  Detected project binding: BOUND
+20:16:02.302 INFO  Check ALM binding of project 'december-man_aws_devops_sample_app' (done) | time=260ms
+20:16:02.304 INFO  Load project pull requests
+20:16:02.818 INFO  Load project pull requests (done) | time=513ms
+20:16:02.823 INFO  Load branch configuration
+20:16:02.828 INFO  Load branch configuration (done) | time=4ms
+20:16:02.851 INFO  Load quality profiles
+20:16:03.231 INFO  Load quality profiles (done) | time=379ms
+20:16:03.254 INFO  Load active rules
+20:16:24.202 INFO  Load active rules (done) | time=20947ms
+20:16:24.542 INFO  Organization key: december-man
+20:16:24.578 INFO  Preprocessing files...
+20:16:25.577 INFO  6 languages detected in 715 preprocessed files
+20:16:25.578 INFO  0 files ignored because of inclusion/exclusion patterns
+20:16:25.579 INFO  0 files ignored because of scm ignore settings
+20:16:25.594 INFO  Loading plugins for detected languages
+20:16:25.595 INFO  Load/download plugins
+20:16:28.044 INFO  Load/download plugins (done) | time=2449ms
+20:16:28.367 INFO  Load project repositories
+20:16:28.750 INFO  Load project repositories (done) | time=382ms
+20:16:28.777 INFO  Indexing files...
+20:16:28.782 INFO  Project configuration:
+20:16:28.782 INFO    Excluded sources: **/build-wrapper-dump.json
+20:16:29.096 INFO  313 files indexed
+20:16:29.114 INFO  Quality profile for docker: Sonar way
+20:16:29.116 INFO  Quality profile for js: Sonar way
+20:16:29.116 INFO  Quality profile for json: Sonar way
+20:16:29.118 INFO  Quality profile for web: Sonar way
+20:16:29.119 INFO  ------------- Run sensors on module december-man_aws_devops_sample_app
+20:16:29.206 INFO  Load metrics repository
+20:16:29.480 INFO  Load metrics repository (done) | time=273ms
+20:16:29.492 INFO  Sensor cache enabled
+20:16:29.725 INFO  Load sensor cache
+20:16:30.190 INFO  Load sensor cache (5 KB) | time=467ms
+20:16:31.212 INFO  Sensor HTML [web]
+20:16:31.364 INFO  Sensor HTML [web] (done) | time=152ms
+20:16:31.364 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+20:16:31.367 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+20:16:31.368 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+20:16:31.368 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=4ms
+20:16:31.371 INFO  Sensor IaC CloudFormation Sensor [iac]
+20:16:31.539 INFO  0 source files to be analyzed
+20:16:31.561 INFO  0/0 source files have been analyzed
+20:16:31.568 INFO  Sensor IaC CloudFormation Sensor [iac] (done) | time=196ms
+20:16:31.569 INFO  Sensor IaC AzureResourceManager Sensor [iac]
+20:16:31.743 INFO  0 source files to be analyzed
+20:16:31.747 INFO  0/0 source files have been analyzed
+20:16:31.750 INFO  Sensor IaC AzureResourceManager Sensor [iac] (done) | time=180ms
+20:16:31.750 INFO  Sensor Java Config Sensor [iac]
+20:16:31.778 INFO  0 source files to be analyzed
+20:16:31.778 INFO  0/0 source files have been analyzed
+20:16:31.781 INFO  Sensor Java Config Sensor [iac] (done) | time=32ms
+20:16:31.782 INFO  Sensor JavaScript/TypeScript analysis [javascript]
+20:16:34.303 INFO  Detected os: Linux arch: amd64 alpine: false. Platform: LINUX_X64
+20:16:37.871 INFO  Using embedded Node.js runtime.
+20:16:37.875 INFO  Using Node.js executable: '/home/jenkins/.sonar/js/node-runtime/node'.
+20:16:41.221 INFO  Memory configuration: OS (1959 MB), Node.js (1003 MB).
+20:16:44.386 INFO  Found 0 tsconfig.json file(s): []
+20:16:44.427 INFO  Creating TypeScript program
+20:16:44.428 INFO  TypeScript configuration file /tmp/tmp-248-WdyRUIzCDfu0
+20:16:44.430 INFO  2 source files to be analyzed
+20:16:45.244 INFO  Starting analysis with current program
+20:16:46.597 INFO  Analyzed 2 file(s) with current program
+20:16:46.609 INFO  2/2 source files have been analyzed
+20:16:46.612 INFO  Hit the cache for 0 out of 2
+20:16:46.621 INFO  Miss the cache for 2 out of 2: ANALYSIS_MODE_INELIGIBLE [2/2]
+20:16:46.622 INFO  Sensor JavaScript/TypeScript analysis [javascript] (done) | time=14841ms
+20:16:46.622 INFO  Sensor JavaScript inside HTML analysis [javascript]
+20:16:46.636 INFO  1 source file to be analyzed
+20:16:46.783 INFO  1/1 source file has been analyzed
+20:16:46.783 INFO  Hit the cache for 0 out of 1
+20:16:46.784 INFO  Miss the cache for 1 out of 1: ANALYSIS_MODE_INELIGIBLE [1/1]
+20:16:46.785 INFO  Sensor JavaScript inside HTML analysis [javascript] (done) | time=165ms
+20:16:46.789 INFO  Sensor CSS Rules [javascript]
+20:16:46.816 INFO  1 source file to be analyzed
+20:16:47.180 INFO  1/1 source file has been analyzed
+20:16:47.187 INFO  Hit the cache for 0 out of 0
+20:16:47.187 INFO  Miss the cache for 0 out of 0
+20:16:47.187 INFO  Sensor CSS Rules [javascript] (done) | time=393ms
+20:16:47.187 INFO  Sensor IaC Docker Sensor [iac]
+20:16:47.298 INFO  1 source file to be analyzed
+20:16:47.502 INFO  1/1 source file has been analyzed
+20:16:47.503 INFO  Sensor IaC Docker Sensor [iac] (done) | time=320ms
+20:16:47.503 INFO  Sensor Serverless configuration file sensor [security]
+20:16:47.511 INFO  0 Serverless function entries were found in the project
+20:16:47.516 INFO  0 Serverless function handlers were kept as entrypoints
+20:16:47.516 INFO  Sensor Serverless configuration file sensor [security] (done) | time=11ms
+20:16:47.517 INFO  Sensor AWS SAM template file sensor [security]
+20:16:47.517 INFO  Sensor AWS SAM template file sensor [security] (done) | time=1ms
+20:16:47.517 INFO  Sensor AWS SAM Inline template file sensor [security]
+20:16:47.517 INFO  Sensor AWS SAM Inline template file sensor [security] (done) | time=0ms
+20:16:47.517 INFO  Sensor EnterpriseTextAndSecretsSensor [textenterprise]
+20:16:47.517 INFO  Available processors: 1
+20:16:47.517 INFO  Using 1 thread for analysis.
+20:16:48.547 INFO  The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test" or "tests"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+20:16:48.599 INFO  Using git CLI to retrieve untracked files
+20:16:49.460 INFO  Analyzing language associated files and files included via "sonar.text.inclusions" that are tracked by git
+20:16:49.530 INFO  111 source files to be analyzed
+20:16:51.069 INFO  111/111 source files have been analyzed
+20:16:51.074 INFO  Sensor EnterpriseTextAndSecretsSensor [textenterprise] (done) | time=3557ms
+20:16:51.077 INFO  Sensor JavaSecuritySensor [security]
+20:16:51.079 INFO  Enabled taint analysis rules: S2076, S2078, S2083, S2091, S2631, S3649, S5131, S5135, S5144, S5145, S5146, S5147, S5334, S5496, S5883, S6096, S6173, S6287, S6350, S6384, S6390, S6398, S6399, S6547, S6549, S7044
+20:16:51.080 INFO  Load type hierarchy and UCFGs: Starting
+20:16:51.081 INFO  Load type hierarchy: Starting
+20:16:51.083 INFO  Reading type hierarchy from: /home/jenkins/agent/workspace/aws_devops_t6/.scannerwork/ucfg2/java
+20:16:51.085 INFO  Read 0 type definitions
+20:16:51.087 INFO  Load type hierarchy: Time spent was 00:00:00.005
+20:16:51.090 INFO  Load UCFGs: Starting
+20:16:51.091 INFO  Load UCFGs: Time spent was 00:00:00.001
+20:16:51.094 INFO  Load type hierarchy and UCFGs: Time spent was 00:00:00.010
+20:16:51.094 INFO  No UCFGs have been included for analysis.
+20:16:51.131 INFO  java security sensor: Time spent was 00:00:00.052
+20:16:51.133 INFO  java security sensor: Begin: 2024-12-01T20:16:51.078312947Z, End: 2024-12-01T20:16:51.131104149Z, Duration: 00:00:00.052
+  Load type hierarchy and UCFGs: Begin: 2024-12-01T20:16:51.080714082Z, End: 2024-12-01T20:16:51.091380492Z, Duration: 00:00:00.010
+    Load type hierarchy: Begin: 2024-12-01T20:16:51.081398832Z, End: 2024-12-01T20:16:51.086858433Z, Duration: 00:00:00.005
+    Load UCFGs: Begin: 2024-12-01T20:16:51.089652652Z, End: 2024-12-01T20:16:51.091056294Z, Duration: 00:00:00.001
+20:16:51.134 INFO  java security sensor peak memory: 145 MB
+20:16:51.135 INFO  Sensor JavaSecuritySensor [security] (done) | time=62ms
+20:16:51.135 INFO  Sensor CSharpSecuritySensor [security]
+20:16:51.138 INFO  Enabled taint analysis rules: S2076, S2078, S2083, S2091, S2631, S3649, S5131, S5135, S5144, S5145, S5146, S5147, S5334, S5883, S6096, S6173, S6287, S6350, S6399, S6547, S6549, S6639, S6641, S6680, S6776, S7044
+20:16:51.139 INFO  Load type hierarchy and UCFGs: Starting
+20:16:51.139 INFO  Load type hierarchy: Starting
+20:16:51.139 INFO  Reading type hierarchy from: /home/jenkins/agent/workspace/aws_devops_t6/ucfg2/cs
+20:16:51.139 INFO  Read 0 type definitions
+20:16:51.140 INFO  Load type hierarchy: Time spent was 00:00:00.000
+20:16:51.140 INFO  Load UCFGs: Starting
+20:16:51.141 INFO  Load UCFGs: Time spent was 00:00:00.000
+20:16:51.142 INFO  Load type hierarchy and UCFGs: Time spent was 00:00:00.001
+20:16:51.144 INFO  No UCFGs have been included for analysis.
+20:16:51.144 INFO  csharp security sensor: Time spent was 00:00:00.003
+20:16:51.145 INFO  csharp security sensor: Begin: 2024-12-01T20:16:51.138119020Z, End: 2024-12-01T20:16:51.141194567Z, Duration: 00:00:00.003
+  Load type hierarchy and UCFGs: Begin: 2024-12-01T20:16:51.139162259Z, End: 2024-12-01T20:16:51.140925453Z, Duration: 00:00:00.001
+    Load type hierarchy: Begin: 2024-12-01T20:16:51.139368608Z, End: 2024-12-01T20:16:51.139940461Z, Duration: 00:00:00.000
+    Load UCFGs: Begin: 2024-12-01T20:16:51.140084336Z, End: 2024-12-01T20:16:51.140120972Z, Duration: 00:00:00.000
+20:16:51.146 INFO  csharp security sensor peak memory: 145 MB
+20:16:51.146 INFO  Sensor CSharpSecuritySensor [security] (done) | time=10ms
+20:16:51.146 INFO  Sensor PhpSecuritySensor [security]
+20:16:51.146 INFO  Enabled taint analysis rules: S2076, S2078, S2083, S2091, S2631, S3649, S5131, S5135, S5144, S5145, S5146, S5334, S5335, S5883, S6173, S6287, S6350, S7044
+20:16:51.146 INFO  Load type hierarchy and UCFGs: Starting
+20:16:51.147 INFO  Load type hierarchy: Starting
+20:16:51.147 INFO  Reading type hierarchy from: /home/jenkins/agent/workspace/aws_devops_t6/.scannerwork/ucfg2/php
+20:16:51.147 INFO  Read 0 type definitions
+20:16:51.147 INFO  Load type hierarchy: Time spent was 00:00:00.001
+20:16:51.147 INFO  Load UCFGs: Starting
+20:16:51.150 INFO  Load UCFGs: Time spent was 00:00:00.000
+20:16:51.150 INFO  Load type hierarchy and UCFGs: Time spent was 00:00:00.004
+20:16:51.151 INFO  No UCFGs have been included for analysis.
+20:16:51.151 INFO  php security sensor: Time spent was 00:00:00.004
+20:16:51.155 INFO  php security sensor: Begin: 2024-12-01T20:16:51.145727112Z, End: 2024-12-01T20:16:51.150473195Z, Duration: 00:00:00.004
+  Load type hierarchy and UCFGs: Begin: 2024-12-01T20:16:51.145844666Z, End: 2024-12-01T20:16:51.150205443Z, Duration: 00:00:00.004
+    Load type hierarchy: Begin: 2024-12-01T20:16:51.145860731Z, End: 2024-12-01T20:16:51.147112494Z, Duration: 00:00:00.001
+    Load UCFGs: Begin: 2024-12-01T20:16:51.147218924Z, End: 2024-12-01T20:16:51.147239703Z, Duration: 00:00:00.000
+20:16:51.156 INFO  php security sensor peak memory: 145 MB
+20:16:51.156 INFO  Sensor PhpSecuritySensor [security] (done) | time=9ms
+20:16:51.156 INFO  Sensor PythonSecuritySensor [security]
+20:16:51.156 INFO  Enabled taint analysis rules: S2076, S2078, S2083, S2091, S2631, S3649, S5131, S5135, S5144, S5145, S5146, S5147, S5334, S5496, S6287, S6350, S6639, S6680, S6776, S6839, S7044
+20:16:51.156 INFO  Load type hierarchy and UCFGs: Starting
+20:16:51.156 INFO  Load type hierarchy: Starting
+20:16:51.157 INFO  Reading type hierarchy from: /home/jenkins/agent/workspace/aws_devops_t6/.scannerwork/ucfg2/python
+20:16:51.157 INFO  Read 0 type definitions
+20:16:51.158 INFO  Load type hierarchy: Time spent was 00:00:00.000
+20:16:51.158 INFO  Load UCFGs: Starting
+20:16:51.158 INFO  Load UCFGs: Time spent was 00:00:00.000
+20:16:51.158 INFO  Load type hierarchy and UCFGs: Time spent was 00:00:00.003
+20:16:51.158 INFO  No UCFGs have been included for analysis.
+20:16:51.162 INFO  python security sensor: Time spent was 00:00:00.003
+20:16:51.163 INFO  python security sensor: Begin: 2024-12-01T20:16:51.154981848Z, End: 2024-12-01T20:16:51.158575180Z, Duration: 00:00:00.003
+  Load type hierarchy and UCFGs: Begin: 2024-12-01T20:16:51.155102537Z, End: 2024-12-01T20:16:51.158345833Z, Duration: 00:00:00.003
+    Load type hierarchy: Begin: 2024-12-01T20:16:51.155120452Z, End: 2024-12-01T20:16:51.155215418Z, Duration: 00:00:00.000
+    Load UCFGs: Begin: 2024-12-01T20:16:51.158245130Z, End: 2024-12-01T20:16:51.158272633Z, Duration: 00:00:00.000
+20:16:51.163 INFO  python security sensor peak memory: 145 MB
+20:16:51.166 INFO  Sensor PythonSecuritySensor [security] (done) | time=9ms
+20:16:51.166 INFO  Sensor JsSecuritySensor [security]
+20:16:51.166 INFO  Enabled taint analysis rules: S5144, S2083, S5146, S5147, S5131, S2076, S6105, S5334, S5696, S6350, S2631, S6287, S6096, S5883, S3649
+20:16:51.167 INFO  Load type hierarchy and UCFGs: Starting
+20:16:51.167 INFO  Load type hierarchy: Starting
+20:16:51.168 INFO  Reading type hierarchy from: /home/jenkins/agent/workspace/aws_devops_t6/.scannerwork/ucfg2/js
+20:16:51.168 INFO  Read 0 type definitions
+20:16:51.168 INFO  Load type hierarchy: Time spent was 00:00:00.000
+20:16:51.169 INFO  Load UCFGs: Starting
+20:16:51.170 INFO  Reading UCFGs from: /home/jenkins/agent/workspace/aws_devops_t6/.scannerwork/ucfg2/js
+20:16:51.342 INFO  Load UCFGs: Time spent was 00:00:00.174
+20:16:51.343 INFO  Load type hierarchy and UCFGs: Time spent was 00:00:00.177
+20:16:51.344 INFO  Analyzing 13 UCFGs to detect vulnerabilities.
+20:16:51.345 INFO  Check cache: Starting
+20:16:51.345 INFO  Load cache: Starting
+20:16:51.345 INFO  Load cache: Time spent was 00:00:00.000
+20:16:51.346 INFO  Check cache: Time spent was 00:00:00.000
+20:16:51.350 INFO  Create runtime call graph: Starting
+20:16:51.350 INFO  Variable Type Analysis #1: Starting
+20:16:51.350 INFO  Create runtime type propagation graph: Starting
+20:16:51.359 INFO  Create runtime type propagation graph: Time spent was 00:00:00.010
+20:16:51.360 INFO  Run SCC (Tarjan) on 33 nodes: Starting
+20:16:51.363 INFO  Run SCC (Tarjan) on 33 nodes: Time spent was 00:00:00.002
+20:16:51.363 INFO  Tarjan found 33 strongly connected components
+20:16:51.363 INFO  Propagate runtime types to strongly connected components: Starting
+20:16:51.371 INFO  Propagate runtime types to strongly connected components: Time spent was 00:00:00.008
+20:16:51.372 INFO  Variable Type Analysis #1: Time spent was 00:00:00.023
+20:16:51.373 INFO  Variable Type Analysis #2: Starting
+20:16:51.373 INFO  Create runtime type propagation graph: Starting
+20:16:51.378 INFO  Create runtime type propagation graph: Time spent was 00:00:00.004
+20:16:51.379 INFO  Run SCC (Tarjan) on 33 nodes: Starting
+20:16:51.379 INFO  Run SCC (Tarjan) on 33 nodes: Time spent was 00:00:00.000
+20:16:51.379 INFO  Tarjan found 33 strongly connected components
+20:16:51.380 INFO  Propagate runtime types to strongly connected components: Starting
+20:16:51.386 INFO  Propagate runtime types to strongly connected components: Time spent was 00:00:00.000
+20:16:51.386 INFO  Variable Type Analysis #2: Time spent was 00:00:00.012
+20:16:51.388 INFO  Create runtime call graph: Time spent was 00:00:00.039
+20:16:51.389 INFO  Load config: Starting
+20:16:51.586 INFO  Load config: Time spent was 00:00:00.197
+20:16:51.588 INFO  Compute entry points: Starting
+20:16:51.641 INFO  Compute entry points: Time spent was 00:00:00.053
+20:16:51.642 INFO  All rules entry points : 3
+20:16:51.642 INFO  Slice call graph: Starting
+20:16:51.643 INFO  Slice call graph: Time spent was 00:00:00.000
+20:16:51.643 INFO  Live variable analysis: Starting
+20:16:51.666 INFO  Live variable analysis: Time spent was 00:00:00.023
+20:16:51.672 INFO  Taint analysis for js: Starting
+20:16:53.311 INFO  0 / 13 UCFGs simulated, memory usage: 97 MB
+20:16:53.459 INFO  5 / 13 UCFGs simulated, memory usage: 102 MB
+20:16:53.460 INFO  Taint analysis for js: Time spent was 00:00:01.787
+20:16:53.461 INFO  Report issues: Starting
+20:16:53.468 INFO  Report issues: Time spent was 00:00:00.007
+20:16:53.469 INFO  Store cache: Starting
+20:16:53.474 INFO  Store cache: Time spent was 00:00:00.003
+20:16:53.475 INFO  js security sensor: Time spent was 00:00:02.310
+20:16:53.484 INFO  js security sensor: Begin: 2024-12-01T20:16:51.164858148Z, End: 2024-12-01T20:16:53.475326102Z, Duration: 00:00:02.310
+  Load type hierarchy and UCFGs: Begin: 2024-12-01T20:16:51.165013564Z, End: 2024-12-01T20:16:51.342720644Z, Duration: 00:00:00.177
+    Load type hierarchy: Begin: 2024-12-01T20:16:51.165029866Z, End: 2024-12-01T20:16:51.165779903Z, Duration: 00:00:00.000
+    Load UCFGs: Begin: 2024-12-01T20:16:51.165845600Z, End: 2024-12-01T20:16:51.340282193Z, Duration: 00:00:00.174
+  Check cache: Begin: 2024-12-01T20:16:51.345450131Z, End: 2024-12-01T20:16:51.346231258Z, Duration: 00:00:00.000
+    Load cache: Begin: 2024-12-01T20:16:51.345666096Z, End: 2024-12-01T20:16:51.345820058Z, Duration: 00:00:00.000
+  Create runtime call graph: Begin: 2024-12-01T20:16:51.347901644Z, End: 2024-12-01T20:16:51.387380868Z, Duration: 00:00:00.039
+    Variable Type Analysis #1: Begin: 2024-12-01T20:16:51.348438612Z, End: 2024-12-01T20:16:51.371972319Z, Duration: 00:00:00.023
+      Create runtime type propagation graph: Begin: 2024-12-01T20:16:51.349292082Z, End: 2024-12-01T20:16:51.359377806Z, Duration: 00:00:00.010
+      Run SCC (Tarjan) on 33 nodes: Begin: 2024-12-01T20:16:51.360303604Z, End: 2024-12-01T20:16:51.362785288Z, Duration: 00:00:00.002
+      Propagate runtime types to strongly connected components: Begin: 2024-12-01T20:16:51.363253869Z, End: 2024-12-01T20:16:51.371655888Z, Duration: 00:00:00.008
+    Variable Type Analysis #2: Begin: 2024-12-01T20:16:51.373506154Z, End: 2024-12-01T20:16:51.386219825Z, Duration: 00:00:00.012
+      Create runtime type propagation graph: Begin: 2024-12-01T20:16:51.373711706Z, End: 2024-12-01T20:16:51.378464709Z, Duration: 00:00:00.004
+      Run SCC (Tarjan) on 33 nodes: Begin: 2024-12-01T20:16:51.379203321Z, End: 2024-12-01T20:16:51.379480791Z, Duration: 00:00:00.000
+      Propagate runtime types to strongly connected components: Begin: 2024-12-01T20:16:51.379958230Z, End: 2024-12-01T20:16:51.380198154Z, Duration: 00:00:00.000
+  Load config: Begin: 2024-12-01T20:16:51.389253300Z, End: 2024-12-01T20:16:51.586478541Z, Duration: 00:00:00.197
+  Compute entry points: Begin: 2024-12-01T20:16:51.587888048Z, End: 2024-12-01T20:16:51.641100745Z, Duration: 00:00:00.053
+  Slice call graph: Begin: 2024-12-01T20:16:51.642163356Z, End: 2024-12-01T20:16:51.642306634Z, Duration: 00:00:00.000
+  Live variable analysis: Begin: 2024-12-01T20:16:51.643464441Z, End: 2024-12-01T20:16:51.666465077Z, Duration: 00:00:00.023
+  Taint analysis for js: Begin: 2024-12-01T20:16:51.671969420Z, End: 2024-12-01T20:16:53.459238589Z, Duration: 00:00:01.787
+  Report issues: Begin: 2024-12-01T20:16:53.460500841Z, End: 2024-12-01T20:16:53.467894732Z, Duration: 00:00:00.007
+  Store cache: Begin: 2024-12-01T20:16:53.469522309Z, End: 2024-12-01T20:16:53.473105622Z, Duration: 00:00:00.003
+20:16:53.490 INFO  js security sensor peak memory: 196 MB
+20:16:53.491 INFO  Sensor JsSecuritySensor [security] (done) | time=2327ms
+20:16:53.506 INFO  ------------- Run sensors on project
+20:16:53.808 INFO  Sensor Zero Coverage Sensor
+20:16:53.829 INFO  Sensor Zero Coverage Sensor (done) | time=20ms
+20:16:53.855 INFO  CPD Executor 1 file had no CPD blocks
+20:16:53.856 INFO  CPD Executor Calculating CPD for 2 files
+20:16:53.880 INFO  CPD Executor CPD calculation finished (done) | time=22ms
+20:16:54.298 INFO  Analysis report generated in 408ms, dir size=461 KB
+20:16:54.458 INFO  Analysis report compressed in 159ms, zip size=172 KB
+20:16:55.529 INFO  Analysis report uploaded in 1070ms
+20:16:55.540 INFO  ANALYSIS SUCCESSFUL, you can find the results at: https://sonarcloud.io/dashboard?id=december-man_aws_devops_sample_app
+20:16:55.544 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+20:16:55.548 INFO  More about the report processing at https://sonarcloud.io/api/ce/task?id=AZOD3neuMreHbemkPu_L
+20:16:55.794 INFO  Sensor cache published successfully
+20:16:55.811 INFO  Time spent writing ucfgs 21ms
+20:16:57.143 INFO  Analysis total time: 56.696 s
+20:16:57.145 INFO  SonarScanner Engine completed successfully
+20:16:57.488 INFO  EXECUTION SUCCESS
+20:16:57.489 INFO  Total time: 1:11.115s
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // script
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
@@ -218,9 +540,9 @@ Sleeping for 5 sec
 [36mINFO[0m[0018] RUN npm install                              
 [36mINFO[0m[0018] Initializing snapshotter ...                 
 [36mINFO[0m[0018] Taking snapshot of full filesystem...        
-[36mINFO[0m[0027] Cmd: /bin/sh                                 
-[36mINFO[0m[0027] Args: [-c npm install]                       
-[36mINFO[0m[0027] Running: [/bin/sh -c npm install]            
+[36mINFO[0m[0028] Cmd: /bin/sh                                 
+[36mINFO[0m[0028] Args: [-c npm install]                       
+[36mINFO[0m[0028] Running: [/bin/sh -c npm install]            
 npm WARN read-shrinkwrap This version of npm is compatible with lockfileVersion@1, but package-lock.json was generated for lockfileVersion@3. I'll try to do my best with it!
 npm WARN deprecated glob@8.1.0: Glob versions prior to v9 are no longer supported
 npm WARN deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
@@ -230,7 +552,7 @@ npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@~2.3.2 (node_modules/ch
 npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
 npm WARN myapp@1.0.0 No repository field.
 
-added 77 packages from 56 contributors and audited 78 packages in 3.109s
+added 77 packages from 56 contributors and audited 78 packages in 2.807s
 
 20 packages are looking for funding
   run `npm fund` for details
@@ -238,14 +560,14 @@ added 77 packages from 56 contributors and audited 78 packages in 3.109s
 found 0 vulnerabilities
 
 [36mINFO[0m[0031] Taking snapshot of full filesystem...        
-[36mINFO[0m[0038] COPY . .                                     
-[36mINFO[0m[0038] Taking snapshot of files...                  
-[36mINFO[0m[0039] EXPOSE 3000                                  
-[36mINFO[0m[0039] Cmd: EXPOSE                                  
-[36mINFO[0m[0039] Adding exposed port: 3000/tcp                
-[36mINFO[0m[0039] CMD ["node", "app.js"]                       
-[36mINFO[0m[0039] Pushing image to 302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops:volha 
-[36mINFO[0m[0040] Pushed 302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops@sha256:3602361096ed71c7e0a6bee797c1a2eb61a22e3cde697ca97f2a3ff5f2d9f5be 
+[36mINFO[0m[0039] COPY . .                                     
+[36mINFO[0m[0039] Taking snapshot of files...                  
+[36mINFO[0m[0040] EXPOSE 3000                                  
+[36mINFO[0m[0040] Cmd: EXPOSE                                  
+[36mINFO[0m[0040] Adding exposed port: 3000/tcp                
+[36mINFO[0m[0040] CMD ["node", "app.js"]                       
+[36mINFO[0m[0040] Pushing image to 302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops:volha 
+[36mINFO[0m[0041] Pushed 302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops@sha256:5c96034ee3170bf985416cf6159bcb7bb0265bd7dd63507d970af3711c150a32 
 [Pipeline] }
 [Pipeline] // container
 [Pipeline] }
@@ -260,10 +582,10 @@ WARNING: Kubernetes configuration file is group-readable. This is insecure. Loca
 WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /etc/kubeconfig/kubeconfig
 Release "myapp" has been upgraded. Happy Helming!
 NAME: myapp
-LAST DEPLOYED: Sun Dec  1 14:28:08 2024
+LAST DEPLOYED: Sun Dec  1 20:17:41 2024
 NAMESPACE: jenkins
 STATUS: deployed
-REVISION: 4
+REVISION: 5
 NOTES:
 1. Get the application URL by running these commands:
   export NODE_PORT=$(kubectl get --namespace jenkins -o jsonpath="{.spec.ports[0].nodePort}" services myapp-nodejs)
@@ -275,8 +597,7 @@ NOTES:
 [Pipeline] // stage
 [Pipeline] stage
 [Pipeline] { (Declarative: Post Actions)
-[Pipeline] echo
-Pipeline succeeded!
+[Pipeline] mail
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] }
@@ -285,4 +606,3 @@ Pipeline succeeded!
 [Pipeline] // podTemplate
 [Pipeline] End of Pipeline
 Finished: SUCCESS
-

@@ -77,14 +77,31 @@ pipeline {
         }
       }
     }
-
+    stage('SonarCloud Analysis') {
+      steps {
+        script {
+          withSonarQubeEnv('SonarCloud') { // Install SonarQube plugin for Jenkins
+            env.SONAR_SCANNER = tool 'sonarqube-scanner' // Setup sonar-scanner in Jenkins Tools
+            sh '''
+            export APP="$(pwd)/myapp"
+            echo "SONARSCANNER: $SONAR_SCANNER, APP: $APP"
+            ${SONAR_SCANNER}/bin/sonar-scanner \
+              -Dsonar.projectKey=december-man_aws_devops_sample_app \
+              -Dsonar.organization=december-man \
+              -Dsonar.sources=${APP} \
+              -Dsonar.host.url=https://sonarcloud.io
+            '''
+          }
+        }
+      }
+    }
     stage('Build Docker Image Using Kaniko and Push It to AWS ECR') { // Build and push Docker image to Amazon ECR using Kaniko
       steps {
         container('kaniko') {
           sh """ 
               #!/bin/sh
               cd myapp
-              /kaniko/executor --context `pwd` --dockerfile `pwd`/Dockerfile --destination 302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops:latest
+              /kaniko/executor --context `pwd` --dockerfile `pwd`/Dockerfile --destination 302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops:volha
           """
         }
       }
@@ -96,7 +113,7 @@ pipeline {
           sh '''
           helm upgrade myapp ./nodejs -n jenkins --install \
             --set image.repository=302263083629.dkr.ecr.eu-central-1.amazonaws.com/aws_devops \
-            --set image.tag=latest
+            --set image.tag=volha
           '''
         }
       }
@@ -105,12 +122,12 @@ pipeline {
 
   post { // NOTE: CONFIGURE SMTP SERVER TO HAVE EMAIL NOTIFICATIONS!
     success {
-      mail to: 'XXX@outlook.com',
+      mail to: 'aspasjutin@outlook.com',
         subject: "SUCCESS: ${currentBuild.fullDisplayName}",
         body: "The pipeline has succeeded."
     }
     failure {
-      mail to: 'XXX@outlook.com',
+      mail to: 'aspasjutin@outlook.com',
         subject: "FAILURE: ${currentBuild.fullDisplayName}",
         body: "The pipeline has failed."
     }
